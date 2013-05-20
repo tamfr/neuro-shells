@@ -5,6 +5,17 @@ Created on Mon May  6 12:47:46 2013
 @author: Mott
 """
 from mix import mix
+import sqlite3
+ 
+conn = sqlite3.connect(":memory:") #Using :memory: to put "database" in RAM
+ 
+cursor = conn.cursor()
+ 
+# create a table
+cursor.execute("""CREATE TABLE mixes
+                  (label text, PPF_batch text, beaker_mass text, 
+                   PPF2DEF_antecedent text, PPF2DEF_consequent text) 
+               """)
 
 mixes = {} # Initiates dictionary to store instances of mix globally.
 
