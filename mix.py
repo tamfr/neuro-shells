@@ -15,6 +15,15 @@ class mix:
         self.pH = float(raw_input('%HMB? '))/100
         self.pT = float(raw_input('%TiO2? '))/100
         self.pI = float(raw_input('%I784? '))/100 
+    def defineFromDatabase(self,beaker_mass,total_mass,P2DRa,P2DRc,BAPO,HMB,TiO2,I784):
+        self.BM = beaker_mass # Mass of beaker mix will reside in.
+        self.TM = total_mass # Desired mass of all combined ingredients.        
+        self.PDRa = P2DRa
+        self.PDRc = P2DRc
+        self.pB = BAPO
+        self.pH = HMB
+        self.pT = TiO2
+        self.pI = I784
     def label(self,text):
         self.label = text
     def create(self):
