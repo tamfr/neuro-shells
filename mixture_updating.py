@@ -5,17 +5,17 @@ Created on Mon May  6 12:47:46 2013
 @author: Mott
 """
 from mix import mix
-import sqlite3
- 
-conn = sqlite3.connect(":memory:") #Using :memory: to put "database" in RAM
- 
-cursor = conn.cursor()
- 
-# create a table
-cursor.execute("""CREATE TABLE mixes
-                  (label text, PPF_batch text, beaker_mass text, 
-                   PPF2DEF_antecedent text, PPF2DEF_consequent text) 
-               """)
+#import sqlite3
+# 
+#conn = sqlite3.connect(":memory:", detect_types=sqlite3.PARSE_DECLTYPES) #Using :memory: to put "database" in RAM
+# 
+#cursor = conn.cursor()
+# 
+## create a table
+#cursor.execute("""CREATE TABLE mixes
+#                  (mix_label text, time_stamp timestamp, PPF_batch date, beaker_mass real, 
+#                   PPF2DEF_antecedent real, PPF2DEF_consequent real, BAPO real, HMB real, TiO2 real, I784 real) 
+#               """)
 
 mixes = {} # Initiates dictionary to store instances of mix globally.
 
@@ -37,6 +37,7 @@ def curingTests():
                     break
                 except KeyError:
                     mixes[mixName] = (mix())
+                    mixes[mixName].define()
                     mixes[mixName].label(mixName)
                     mixes[mixName].create()
                     c = 0
@@ -51,6 +52,7 @@ def curingTests():
                     new = raw_input('This mix does not exist! Would you like to create it? [Y/N] ')
                     if new == 'Y' or new == 'y': 
                         mixes[mixName] = (mix())
+                        mixes[mixName].define()
                         mixes[mixName].label(mixName)
                         mixes[mixName].create()
                     else:

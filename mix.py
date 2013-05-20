@@ -7,12 +7,14 @@ Created on Wed May 15 18:10:54 2013
 from collections import OrderedDict
 class mix:
     def __init__(self):        
+        pass         
+    def define(self):
         self.PDRa = float(raw_input('Desired PPF:DEF ratio antecedent? (e.g. enter 1.5 if ratio is 1.5:1) '))
         self.PDRc = float(raw_input('Desired PPF:DEF ratio consequent? (e.g. enter 2 if ratio is 3:2) '))
         self.pB = float(raw_input('%BAPO? '))/100
         self.pH = float(raw_input('%HMB? '))/100
         self.pT = float(raw_input('%TiO2? '))/100
-        self.pI = float(raw_input('%I784? '))/100          
+        self.pI = float(raw_input('%I784? '))/100 
     def label(self,text):
         self.label = text
     def create(self):
